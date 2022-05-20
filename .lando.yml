@@ -9,10 +9,12 @@ services:
   appserver:
     build_as_root:
       - apt-get update -qq
-      - apt install libxslt1-dev -yqq
+      - apt-get install libxslt1-dev cron -yqq
       - docker-php-ext-install xsl sockets
     build:
       - composer i
+    run_as_root:
+      - service cron start
   search:
     type: elasticsearch:7
   mail:

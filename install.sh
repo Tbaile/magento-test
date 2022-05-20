@@ -19,3 +19,5 @@ bin/magento setup:install \
     --currency=EUR \
     --timezone=Europe/Rome \
     --use-rewrites=1
+
+bin/magento cron:install
