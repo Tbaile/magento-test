@@ -11,8 +11,6 @@ services:
       - apt-get update -qq
       - apt-get install libxslt1-dev cron -yqq
       - docker-php-ext-install xsl sockets
-    build:
-      - composer i
     run_as_root:
       - service cron start
   search:
