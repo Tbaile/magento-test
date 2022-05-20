@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "914087e512af6a559a7895d6310b69a6",
+    "content-hash": "c7ca947d7d65176ca66bba3855a61954",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -26190,6 +26190,44 @@
                 }
             ],
             "time": "2021-07-28T10:34:58+00:00"
+        },
+        {
+            "name": "vpietri/adm-quickdevbar",
+            "version": "0.1.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vpietri/magento2-developer-quickdevbar.git",
+                "reference": "3900416d4fbe4563a4bfaa0a3e8d8e230c9e7d7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vpietri/magento2-developer-quickdevbar/zipball/3900416d4fbe4563a4bfaa0a3e8d8e230c9e7d7c",
+                "reference": "3900416d4fbe4563a4bfaa0a3e8d8e230c9e7d7c",
+                "shasum": ""
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "ADM\\QuickDevBar\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Vincent Pietri",
+                    "homepage": "http://www.vincent-pietri.fr/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "QuickDevBar is a developer toolbar for magento 2",
+            "support": {
+                "issues": "https://github.com/vpietri/magento2-developer-quickdevbar/issues",
+                "source": "https://github.com/vpietri/magento2-developer-quickdevbar/tree/0.1.6.1"
+            },
+            "time": "2016-06-30T14:07:19+00:00"
         },
         {
             "name": "weew/helpers-array",

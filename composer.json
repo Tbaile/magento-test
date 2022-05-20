@@ -75,7 +75,8 @@
         "phpunit/phpunit": "~9.5.0",
         "sebastian/phpcpd": "^6.0.3",
         "squizlabs/php_codesniffer": "~3.6.0",
-        "symfony/finder": "^5.2"
+        "symfony/finder": "^5.2",
+        "vpietri/adm-quickdevbar": "0.1.6.1"
     },
     "conflict": {
         "gene/bluefoot": "*"
