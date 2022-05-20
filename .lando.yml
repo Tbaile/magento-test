@@ -32,6 +32,36 @@ tooling:
   magento:
     service: appserver
     cmd: bin/magento
-  install:
+  init-magento:
     service: appserver
-    cmd: /app/install.sh
+    cmd: |
+      bin/magento setup:install \
+        --base-url=https://magento.lndo.site \
+        --db-host=database \
+        --db-name=lemp \
+        --db-user=lemp \
+        --db-password=lemp \
+        --admin-firstname=Tommaso \
+        --admin-lastname=Bailetti \
+        --admin-email=bailetti.tommaso@gmail.com \
+        --admin-user=admin \
+        --admin-password=admin123 \
+        --elasticsearch-host=search \
+        --amqp-host=messaging \
+        --amqp-user=magento \
+        --amqp-password=magento \
+        --language=it_IT \
+        --currency=EUR \
+        --timezone=Europe/Rome \
+        --use-rewrites=1 \
+      bin/magento cron:install
+  remove-magento:
+    service: appserver
+    cmd:
+      - bin/magento cron:remove
+      - bin/magento setup:uninstall -n
+  sample-data:
+    service: appserver
+    cmd:
+      - bin/magento sampledata:deploy
+      - bin/magento setup:upgrade
