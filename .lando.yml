@@ -3,17 +3,35 @@ recipe: lemp
 config:
   php: '8.1'
   webroot: pub
+  config:
+    vhosts: nginx.conf.lando
 services:
   appserver:
     build_as_root:
       - apt-get update -qq
       - apt install libxslt1-dev -yqq
       - docker-php-ext-install xsl sockets
-    run:
+    build:
       - composer i
   search:
     type: elasticsearch:7
+  mail:
+    type: mailhog
+    hogfrom:
+      - appserver
+  messaging:
+    type: compose
+    app_mount: false
+    services:
+      image: rabbitmq
+      command: docker-entrypoint.sh rabbitmq-server
+      environment:
+        RABBITMQ_DEFAULT_USER: magento
+        RABBITMQ_DEFAULT_PASS: magento
 tooling:
   magento:
     service: appserver
     cmd: bin/magento
+  install:
+    service: appserver
+    cmd: /app/install.sh
