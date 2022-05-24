@@ -1,0 +1,12 @@
+{
+    "name": "test/demo",
+    "type": "magento2-module",
+    "autoload": {
+        "psr-4": {
+            "Test\\Demo\\:": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}
