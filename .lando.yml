@@ -53,9 +53,9 @@ tooling:
         --language=it_IT \
         --currency=EUR \
         --timezone=Europe/Rome \
-        --use-rewrites=1 \
+        --use-rewrites=1
       bin/magento cron:install
-  remove-magento:
+  uninstall-magento:
     service: appserver
     cmd:
       - bin/magento cron:remove

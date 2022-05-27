@@ -1,0 +1,32 @@
+services:
+  database:
+    image: mysql:8.0
+    ports:
+      - "3307:3306"
+    volumes:
+      - database:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "magento"
+      MYSQL_USER: "magento"
+      MYSQL_PASSWORD: "magento"
+  rabbitmq:
+    image: rabbitmq:3.9
+    ports:
+      - "5673:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "magento"
+      RABBITMQ_DEFAULT_PASS: "magento"
+  redis:
+    image: redis:6.2
+    ports:
+      - "6380:6379"
+  elasticsearch:
+    image: elasticsearch:7.17.4
+    ports:
+      - "9201:9200"
+    environment:
+      - discovery.type=single-node
+
+volumes:
+  database:
