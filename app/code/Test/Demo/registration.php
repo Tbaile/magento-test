@@ -2,4 +2,4 @@
 
 use Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Module_Test', __DIR__);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Test_Demo', __DIR__);
