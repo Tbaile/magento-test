@@ -3,15 +3,20 @@
 namespace Test\Demo\Setup\Patch\Data;
 
 use Magento\Catalog\Model\Product;
+use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Eav\Setup\EavSetupFactory;
+use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
+use Magento\Framework\Setup\Patch\PatchRevertableInterface;
 
-class AddExpressShipmentIncentive implements DataPatchInterface
+class AddExpressShipmentIncentive implements DataPatchInterface, PatchRevertableInterface
 {
+    private ModuleDataSetupInterface $moduleDataSetup;
     private EavSetupFactory $eavSetupFactory;
 
-    public function __construct(EavSetupFactory $eavSetupFactory)
+    public function __construct(ModuleDataSetupInterface $moduleDataSetup, EavSetupFactory $eavSetupFactory)
     {
+        $this->moduleDataSetup = $moduleDataSetup;
         $this->eavSetupFactory = $eavSetupFactory;
     }
 
@@ -27,19 +32,31 @@ class AddExpressShipmentIncentive implements DataPatchInterface
 
     public function apply()
     {
+        $this->moduleDataSetup->getConnection()->startSetup();
+        /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
         $eavSetup->addAttribute(
             Product::ENTITY,
             'express_delivery',
             [
-                'type' => 'boolean',
+                'type' => 'int',
                 'label' => 'Express Delivery',
                 'input' => 'boolean',
-                'default' => '0',
                 'required' => false,
-                'sort_order' => 100,
-                'group' => 'General',
+                'default' => '0',
+                'group' => 'General'
             ]
         );
+        $this->moduleDataSetup->getConnection()->endSetup();
+    }
+
+    public function revert()
+    {
+        $this->moduleDataSetup->getConnection()->startSetup();
+        /** @var EavSetup $eavSetup */
+        $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
+        $eavSetup->removeAttribute(Product::ENTITY, 'express_delivery');
+
+        $this->moduleDataSetup->getConnection()->endSetup();
     }
 }
