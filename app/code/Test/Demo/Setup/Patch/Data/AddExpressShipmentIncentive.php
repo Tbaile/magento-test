@@ -3,7 +3,6 @@
 namespace Test\Demo\Setup\Patch\Data;
 
 use Magento\Catalog\Model\Product;
-use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
@@ -47,6 +46,18 @@ class AddExpressShipmentIncentive implements DataPatchInterface, PatchRevertable
                 'group' => 'General'
             ]
         );
+        $eavSetup->addAttribute(
+            Product::ENTITY,
+            'express_delivery_message',
+            [
+                'type' => 'varchar',
+                'label' => 'Express Delivery Message',
+                'input' => 'text',
+                'required' => false,
+                'default' => '',
+                'group' => 'General'
+            ]
+        );
         $this->moduleDataSetup->getConnection()->endSetup();
     }
 
@@ -56,6 +67,7 @@ class AddExpressShipmentIncentive implements DataPatchInterface, PatchRevertable
         /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
         $eavSetup->removeAttribute(Product::ENTITY, 'express_delivery');
+        $eavSetup->removeAttribute(Product::ENTITY, 'express_delivery_message');
 
         $this->moduleDataSetup->getConnection()->endSetup();
     }
