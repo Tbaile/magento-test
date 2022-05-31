@@ -11,14 +11,14 @@ services:
       MYSQL_USER: "magento"
       MYSQL_PASSWORD: "magento"
   rabbitmq:
-    image: rabbitmq:3.9
+    image: rabbitmq:3.9-alpine
     ports:
       - "5673:5672"
     environment:
       RABBITMQ_DEFAULT_USER: "magento"
       RABBITMQ_DEFAULT_PASS: "magento"
   redis:
-    image: redis:6.2
+    image: redis:6.2-alpine
     ports:
       - "6380:6379"
   elasticsearch:
