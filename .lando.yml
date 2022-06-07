@@ -5,6 +5,7 @@ config:
   webroot: pub
   config:
     vhosts: nginx.conf.lando
+  xdebug: "debug,develop"
 services:
   appserver:
     build_as_root:
