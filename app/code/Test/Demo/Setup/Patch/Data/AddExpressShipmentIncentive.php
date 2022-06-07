@@ -42,7 +42,7 @@ class AddExpressShipmentIncentive implements DataPatchInterface, PatchRevertable
                 'label' => 'Express Delivery',
                 'input' => 'boolean',
                 'required' => false,
-                'default' => '0',
+                'default' => '1',
                 'group' => 'General'
             ]
         );
