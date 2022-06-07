@@ -3,6 +3,14 @@
 /** @var \Test\Demo\ViewModel\ProductViewModel $productViewModel */
 $productViewModel = $block->getData('product_view_model');
 ?>
-<div id="test" data-mage-init='{ "app":{} }' class="express-shipment">
-    <?= $productViewModel->getProduct()?->getData('express_delivery_message') ?>
+<div id="express_shipment_module" data-mage-init='{ "app":{} }'>
+    <?php if ($productViewModel->getExpressDelivery()) { ?>
+        <div class="express-shipment">
+            <?php if (empty($productViewModel->getExpressDeliveryMessage())) { ?>
+                <?= __("Order by 18:00 to get the product tomorrow!") ?>
+            <?php } else { ?>
+                <?= __($productViewModel->getExpressDeliveryMessage()) ?>
+            <?php } ?>
+        </div>
+    <?php } ?>
 </div>
