@@ -1,3 +1,8 @@
-<div id="test" data-mage-init='{ "ciao":{} }'>
-    Hello world?
+<?php
+
+/** @var \Test\Demo\ViewModel\ProductViewModel $productViewModel */
+$productViewModel = $block->getData('product_view_model');
+?>
+<div id="test" data-mage-init='{ "app":{} }' class="express-shipment">
+    <?= $productViewModel->getProduct()?->getData('express_delivery_message') ?>
 </div>
