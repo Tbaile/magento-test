@@ -10,6 +10,7 @@ bin/magento setup:install \
     --admin-email=bailetti.tommaso@gmail.com \
     --admin-user=admin \
     --admin-password=admin123 \
+    --backend-frontname=admin \
     --elasticsearch-host=127.0.0.1 \
     --elasticsearch-port=9201 \
     --amqp-host=127.0.0.1 \

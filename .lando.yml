@@ -46,6 +46,7 @@ tooling:
         --admin-email=bailetti.tommaso@gmail.com \
         --admin-user=admin \
         --admin-password=admin123 \
+        --backend-frontname=admin \
         --elasticsearch-host=search \
         --amqp-host=messaging \
         --amqp-user=magento \
