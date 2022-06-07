@@ -1,7 +1,7 @@
 var config = {
     map: {
         '*': {
-            ciao: 'Test_Demo/js/ciao'
+            ciao: 'Test_Demo/js/app'
         }
     }
 };

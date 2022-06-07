@@ -1,9 +1,16 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Test_Demo::css/app.css" />
+    </head>
     <body>
-        <referenceContainer name="product.info.main">
-            <block name="test_demo" after="product.info" template="Test_Demo::demo.phtml"/>
+        <referenceContainer name="product.info.addtocart.additional">
+            <block name="test_demo" before="-" template="Test_Demo::demo.phtml">
+                <arguments>
+                    <argument name="product_view_model" xsi:type="object">Test\Demo\ViewModel\ProductViewModel</argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>
