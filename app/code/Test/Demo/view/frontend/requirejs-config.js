@@ -1,7 +1,7 @@
 let config = {
     map: {
         '*': {
-            ciao: 'Test_Demo/js/app'
+            app: 'Test_Demo/js/app'
         }
     },
     paths: {
